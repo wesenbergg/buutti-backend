@@ -6,17 +6,6 @@ require('dotenv').config();
 const cors = require('cors');
 
 const PORT = process.env.PORT || '-1';
-// const MONGO_URI = process.env.MONGODB_URI || 'URI_NOT_FOUND';
-
-// mongoose.connect(MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// }).then(() => {
-//   console.log('connected to MongoDB');
-// }).catch((error) => {
-//   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-//   console.log('error connection to MongoDB:', error.message);
-// });
 
 const app = express();
 app.use(cors());

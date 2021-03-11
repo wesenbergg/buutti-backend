@@ -1,4 +1,4 @@
-const data = [
+var data = [
   {
     id: 0,
     title: "Saatana saapuu Moskovaan",
@@ -19,6 +19,20 @@ const data = [
   }
 ]
 
-const previewData = data.map(b => ({ id: b.id, title: b.title, author: b.author }))
+const previewData = () => {
+  return data.map(b => ({ id: b.id, title: b.title, author: b.author }))
+}
 
-module.exports = { data, previewData }
+const findDataById = (id) => data.find(b => b.id === parseInt(id))
+
+const updateById = (id, book) => data = data.map(b => parseInt(id) === b.id ? book: b)
+
+const addData = (book) => {
+  data = [ ...data, {...book, id: Math.floor(Math.random() * 99999) + 3}]
+}
+
+const deleteById = (id) => {
+  data = data.filter(b => b.id !== parseInt(id))
+}
+
+module.exports = { data, previewData, findDataById, updateById, addData, deleteById }
