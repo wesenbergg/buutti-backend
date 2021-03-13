@@ -16,7 +16,6 @@ const App = () => {
     setDescription('')
   }
 
-  console.log(books);
   const handleSubmit = async (e) => {
     e.preventDefault()
     const newBook = await addBook({ title, author, description })
