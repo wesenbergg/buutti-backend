@@ -50,7 +50,7 @@ const App = () => {
 
   const handleExpand = async (book) => {
     const { id, description } = book
-    if(description) return book
+    if(description) return setCurrentBook(book)
     const res = await fetchBookById(id)
     setCurrentBook(res)
   }
