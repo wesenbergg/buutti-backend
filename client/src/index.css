@@ -5,9 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #001a;
+  background-image: url("img/buutti.webp");
+  background-size: 467px 238px;
+  color: aliceblue;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  background-color: #223;
+}
+
+.card {
+  background-color: #334;
+  color: aliceblue;
+}
+
+.btn-success {
+  margin-right: 1rem;
 }

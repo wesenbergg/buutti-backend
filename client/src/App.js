@@ -62,38 +62,49 @@ const App = () => {
     f()
   }, [])
 
+  const isDisabled = () => (typeof id === "number")
+
   return ( 
-    <>
+    <div className="container p-5 mt-5">
+      <h1 className="text-center">Book list</h1>
       {currentBook &&
-      <>
-        <h2>{currentBook.title}</h2>
-        <small>{currentBook.author}</small>
-        <p>{currentBook.description}</p>
-        <button onClick={handleEdit}>edit</button>
-      </>}
-      <form onSubmit={handleSubmit}>
-        <label>Add title:</label>
-        <input value={title} onChange={({ target }) => setTitle(target.value)}/>
-        <label>Add title:</label>
-        <input value={author} onChange={({ target }) => setAuthor(target.value)}/>
-        <label>Add description:</label>
-        <textarea rows={4}
+      <div className="card p-4 mb-5">
+        <div className="card-header">
+          <h2 className="card-title">{currentBook.title}</h2>
+          <small className="card-subtitle">{currentBook.author}</small>
+        </div>
+        <div className="card-body">
+          <p className="card-text">{currentBook.description}</p>
+          <button className="btn btn-light" onClick={handleEdit}>edit</button>
+        </div>
+        
+      </div>}
+      <form className="p-4 mb-5 card">
+        <div className="card-body"><label className="form-label" >Add title:</label>
+        <input className="form-control mb-2" value={title} onChange={({ target }) => setTitle(target.value)}/>
+        <label className="form-label">Add title:</label>
+        <input className="form-control mb-2" value={author} onChange={({ target }) => setAuthor(target.value)}/>
+        <label className="form-label">Add description:</label>
+        <textarea className="form-control mb-2" rows={4}
           value={description} onChange={({ target }) => setDescription(target.value)}/>
-        {typeof id === "number" ?
-          <>
-            <span onClick={handleUpdate}>Save</span>
-            <span onClick={handleDelete}>Delete</span>
-          </>:
-          <button type="submit">Save New</button>
-        }
+        
+          <button disabled={!isDisabled()} className="btn btn-success" type="button" onClick={handleSubmit}>Save New</button>
+        <button disabled={isDisabled()} className="btn btn-success" type="button" onClick={handleUpdate}>Save</button>
+        <button disabled={isDisabled()} className="btn btn-outline-danger" type="button" onClick={handleDelete}>Delete</button>
+
+        </div>
+        
       </form>
       {books.map((b) => 
-      <div key={b.id}>
-        <h3>{b.title}</h3>
-        <p>{b.author}</p>
-        <button onClick={() => handleExpand(b)}>Show full article</button>
-      </div>)}
-    </>
+        <div className="card mb-3" key={b.id}>
+          <h3 className="card-header">{b.title}</h3>
+          <div className="card-body">
+            <p>{b.author}</p>
+            <button className="btn btn-outline-light" onClick={() => handleExpand(b)}>Show full article</button>
+          </div>
+        </div>
+      )}
+    </div>
    );
 }
  
