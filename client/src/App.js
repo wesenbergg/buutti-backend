@@ -45,9 +45,6 @@ const App = () => {
     setCurrentBook(res)
   }
 
-  // { title, author, description }setCurrentBook(data)
-      // setBooks(books.map(b => id === b.id ? data: b))
-
   useEffect(() => {
     const f = async () => {
       const res = await fetchBooks()

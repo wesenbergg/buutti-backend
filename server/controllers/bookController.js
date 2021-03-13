@@ -1,32 +1,29 @@
-const { previewData, findDataById, updateById, addData, deleteById } = require('../data.js')
+const { previewData, updateById, addData, deleteById } = require('../data.js')
 
 const getBooks = (_req, res) => {  
   return res.status(200).send({ data: previewData() });
 }
 
 const getBookById = (req, res) => {
-  const id = req.params.id;
-  const foundData = findDataById(id)
-  return res.status(200).send({ data: foundData });
+  return res.status(200).send({ data: req.book });
 }
 
 const updateBookById = (req, res) => {
   const { params, body } = req;
-  updateById(params.id, body)
-  return res.status(200);
+  const updatedBook = updateById(params.id, body)
+  return res.status(200).send(updatedBook);
 }
 
 const postBook = (req, res) => {
   const { body } = req;
-  console.log(body);
-  addData(body)
-  return res.status(200);
+  const addedBook = addData(body)
+  return res.status(200).send(addedBook);
 }
 
 const deleteBook = (req, res) => {
-  const { params } = req;
-  deleteById(params.id)
-  return res.status(200);
+  const { id } = req.params;
+  deleteById(id)
+  return res.status(200).send("Successfully deleted book by id: "+id);
 }
 
 module.exports = { getBooks, getBookById, updateBookById, postBook, deleteBook };

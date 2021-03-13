@@ -25,10 +25,15 @@ const previewData = () => {
 
 const findDataById = (id) => data.find(b => b.id === parseInt(id))
 
-const updateById = (id, book) => data = data.map(b => parseInt(id) === b.id ? book: b)
+const updateById = (id, book) => {
+  data = data.map(b => parseInt(id) === b.id ? {...book, id: b.id}: b)
+  return book
+}
 
 const addData = (book) => {
-  data = [ ...data, {...book, id: Math.floor(Math.random() * 99999) + 3}]
+  const newBook = {...book, id: Math.floor(Math.random() * 99999) + 3}
+  data = [ ...data, newBook]
+  return newBook
 }
 
 const deleteById = (id) => {
