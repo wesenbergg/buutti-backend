@@ -32,14 +32,14 @@ export const addBook = async (book) => {
 
 export const fetchBookById = async (id) => {
   const res = await fetch(`http://localhost:3001/api/books/${id}`);
-  const { data } = await res.json();
+  const data = await res.json();
   if(res.status !== 200) return;
   return data;
 }
 
 export const fetchBooks = async () => {
   const res = await fetch("http://localhost:3001/api/books");
-  const { data } = await res.json();
+  const data = await res.json();
   if(res.status !== 200) return;
   return data;
 }

@@ -16,9 +16,12 @@ const App = () => {
     setDescription('')
   }
 
-  const handleSubmit = (e) => {
+  console.log(books);
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    addBook({ title, author, description })
+    const newBook = await addBook({ title, author, description })
+    if(!newBook)return;
+    setBooks([...books, newBook ])
     reset()
   }
 

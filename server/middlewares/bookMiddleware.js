@@ -3,7 +3,7 @@ const { findDataById } = require("../data");
 const bookExists = (req, res, next) => {
   const { id } = req.params
   if(!id || Number.isNaN(parseInt(id)))
-    return res.status(401).send("Expected number as id parameter instead: "+id)
+    return res.status(400).send("Expected number as id parameter instead: "+id)
   const foundBook = findDataById(id)
   if(!foundBook)
     return res.status(400).send("Book by id "+id+" not found")
@@ -13,7 +13,6 @@ const bookExists = (req, res, next) => {
 
 const validateBookBody = (req, res, next)  => {
   const { title, author, description } = req.body
-  console.log(req.body);
   if(!title || typeof title !== "string" || title.length < 3)
     return res.status(400).send("Invalid title")
   if(!author || typeof author !== "string" || author.length < 3)

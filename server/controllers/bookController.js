@@ -1,11 +1,11 @@
 const { previewData, updateById, addData, deleteById } = require('../data.js')
 
 const getBooks = (_req, res) => {  
-  return res.status(200).send({ data: previewData() });
+  return res.status(200).send(previewData());
 }
 
 const getBookById = (req, res) => {
-  return res.status(200).send({ data: req.book });
+  return res.status(200).send(req.book);
 }
 
 const updateBookById = (req, res) => {

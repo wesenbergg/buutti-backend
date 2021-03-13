@@ -5,7 +5,7 @@ const pingRouter = express.Router();
 
 pingRouter.get('/', (_req, res) => {
   console.log('someone pinged here');
-  res.send({ data: 'pong' });
+  res.status(200).send({ data: 'pong' });
 });
 
 module.exports = pingRouter;
