@@ -29,12 +29,19 @@ const App = () => {
     setDescription(currentBook.description)
   }
 
-  const handleDelete = () => {
-    deleteBook(id)
+  const handleDelete = async () => {
+    const res = deleteBook(id)
+    if(!res) return;
+    setBooks(books.filter(b => b.id !== parseInt(id)))
+    setCurrentBook(false)
+    reset()
   }
 
-  const handleUpdate = () => {
-    updateBook({ id, title, author, description })
+  const handleUpdate = async () => {
+    const data = await updateBook({ id, title, author, description })
+    if(!data) return;
+    setBooks(books.map(b => parseInt(id) === b.id ? data: b))
+    setCurrentBook(data)
     reset()
   }
 

@@ -40,4 +40,4 @@ const deleteById = (id) => {
   data = data.filter(b => b.id !== parseInt(id))
 }
 
-module.exports = { data, previewData, findDataById, updateById, addData, deleteById }
+module.exports = { previewData, findDataById, updateById, addData, deleteById }
