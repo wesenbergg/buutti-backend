@@ -8,6 +8,7 @@ body {
   background-color: #001a;
   background-image: url("img/buutti.webp");
   background-size: 467px 238px;
+  background-attachment: fixed;
   color: aliceblue;
 }
 
@@ -22,9 +23,8 @@ code {
 
 .card {
   background-color: #334;
-  color: aliceblue;
 }
 
-.btn-success {
+.btn {
   margin-right: 1rem;
 }
